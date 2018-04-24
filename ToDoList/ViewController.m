@@ -138,10 +138,21 @@
                                                     [self.tableView reloadData];
                                                     
                                                 }];
+    UITableViewRowAction *deleteAction = [UITableViewRowAction
+                                                rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                title:@"Delete"
+                                                handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                                                    
+                                                    [self.toDoArray removeObjectAtIndex:indexPath.row];
+                                                    
+                                                    [self.tableView reloadData];
+                                                    
+                                                }];
     
+    deleteAction.backgroundColor = [UIColor redColor];
     completeTaskAction.backgroundColor = [UIColor greenColor];
     
-    return @[completeTaskAction];
+    return @[deleteAction, completeTaskAction];
 }
 
 

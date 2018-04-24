@@ -17,6 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+
+- (IBAction)submitDetails:(id)sender {
+    ToDo *todo = [[ToDo alloc] initWithFullDetails:self.titleTextField.text
+                                   toDoDescription:self.descriptionTextField.text
+                                    priorityNumber: [NSNumber numberWithInteger:self.prioityTextField.text.integerValue]
+                                        isComplete:NO];
+    
+    [self.delegate addTodo:todo];
 }
 
 - (void)didReceiveMemoryWarning {

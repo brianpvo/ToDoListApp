@@ -55,6 +55,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.toDoArray count];
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -86,6 +88,21 @@
         AddTodoViewController *addVC = [segue destinationViewController];
         addVC.delegate = self;
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewRowAction *tableViewAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Complete Task" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        NSLog(@"is complete");
+    }];
+    
+    tableViewAction.backgroundColor = [UIColor greenColor];
+    
+    return @[tableViewAction];
 }
 
 

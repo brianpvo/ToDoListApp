@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ToDo.h"
 #import "ToDoCell.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()
 
@@ -23,8 +24,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     ToDo *firstToDo = [[ToDo alloc] initWithFullDetails:@"Drive" toDoDescription:@"Drive kids to school" priorityNumber:[NSNumber numberWithInt: 100] isComplete:NO];
-    ToDo *secondToDo = [[ToDo alloc] initWithFullDetails:@"Work" toDoDescription:@"Go to work" priorityNumber:[NSNumber numberWithInt: 98] isComplete:NO];
-    ToDo *thirdToDo = [[ToDo alloc] initWithFullDetails:@"Pick Up Kids" toDoDescription:@"Pick up kids from school" priorityNumber:[NSNumber numberWithInt: 99] isComplete:NO];
+    ToDo *secondToDo = [[ToDo alloc] initWithFullDetails:@"Work" toDoDescription:@"Go to work" priorityNumber:[NSNumber numberWithInt: 90] isComplete:NO];
+    ToDo *thirdToDo = [[ToDo alloc] initWithFullDetails:@"Pick Up Kids" toDoDescription:@"Pick up kids from school" priorityNumber:[NSNumber numberWithInt: 98] isComplete:NO];
     ToDo *fourthToDo = [[ToDo alloc] initWithFullDetails:@"Cook" toDoDescription:@"Cook food for family" priorityNumber:[NSNumber numberWithInt: 75] isComplete:NO];
     ToDo *fifthToDo = [[ToDo alloc] initWithFullDetails:@"Relax" toDoDescription:@"Take a break and relax for the day" priorityNumber:[NSNumber numberWithInt: 50] isComplete:NO];
     
@@ -58,6 +59,24 @@
     cell.priortyLabel.text = [NSString stringWithFormat:@"%@", todo.prioityNumber];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self performSegueWithIdentifier:@"todoDetailsId" sender:indexPath];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"todoDetailsId"]) {
+        
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        
+        DetailViewController *detailVC = [segue destinationViewController];
+        
+        detailVC.todo = [self.toDoArray objectAtIndex:indexPath.row];
+        
+    }
 }
 
 

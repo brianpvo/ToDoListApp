@@ -17,6 +17,7 @@
 		7A8C9AFF208FAC510029FCA0 /* ToDoListUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C9AFE208FAC510029FCA0 /* ToDoListUITests.m */; };
 		7A8C9B0E208FAC860029FCA0 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C9B0D208FAC860029FCA0 /* ToDo.m */; };
 		7A8C9B11208FB30C0029FCA0 /* ToDoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C9B10208FB30C0029FCA0 /* ToDoCell.m */; };
+		7A8C9B14208FB9EC0029FCA0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C9B13208FB9EC0029FCA0 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		7A8C9B0D208FAC860029FCA0 /* ToDo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 		7A8C9B0F208FB30C0029FCA0 /* ToDoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoCell.h; sourceTree = "<group>"; };
 		7A8C9B10208FB30C0029FCA0 /* ToDoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoCell.m; sourceTree = "<group>"; };
+		7A8C9B12208FB9EC0029FCA0 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		7A8C9B13208FB9EC0029FCA0 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				7A8C9B0D208FAC860029FCA0 /* ToDo.m */,
 				7A8C9B0F208FB30C0029FCA0 /* ToDoCell.h */,
 				7A8C9B10208FB30C0029FCA0 /* ToDoCell.m */,
+				7A8C9B12208FB9EC0029FCA0 /* DetailViewController.h */,
+				7A8C9B13208FB9EC0029FCA0 /* DetailViewController.m */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				7A8C9AEA208FAC500029FCA0 /* main.m in Sources */,
 				7A8C9ADC208FAC500029FCA0 /* AppDelegate.m in Sources */,
 				7A8C9B0E208FAC860029FCA0 /* ToDo.m in Sources */,
+				7A8C9B14208FB9EC0029FCA0 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

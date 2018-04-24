@@ -82,10 +82,47 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="Zga-Pe-7qf" kind="show" identifier="todoDetailsId" id="B8r-zA-aVb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="kdz-58-JnS">
+            <objects>
+                <viewController id="Zga-Pe-7qf" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wXg-MW-7A7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esY-Mw-rf0">
+                                <rect key="frame" x="16" y="20" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="d4j-4t-byx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="esY-Mw-rf0" firstAttribute="top" secondItem="1LI-ZT-Wfs" secondAttribute="top" id="483-cE-GpD"/>
+                            <constraint firstItem="esY-Mw-rf0" firstAttribute="leading" secondItem="1LI-ZT-Wfs" secondAttribute="leading" constant="16" id="r1p-D1-LlI"/>
+                            <constraint firstItem="1LI-ZT-Wfs" firstAttribute="trailing" secondItem="esY-Mw-rf0" secondAttribute="trailing" constant="16" id="z2L-og-jbM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1LI-ZT-Wfs"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="esY-Mw-rf0" id="mYl-hP-utY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bc6-a2-orW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

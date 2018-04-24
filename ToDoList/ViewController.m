@@ -15,6 +15,7 @@
 @interface ViewController () <AddTodoViewControllerDelegate>
 
 @property (nonatomic) NSMutableArray <ToDo *> *toDoArray;
+@property (nonatomic) NSMutableArray <ToDo *> *completedTasksArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -40,6 +41,8 @@
                       fifthToDo,
                       nil];
     
+    self.completedTasksArray = [[NSMutableArray alloc] init];
+    
 }
 
 -(void)addTodo:(ToDo *)todo {
@@ -49,26 +52,41 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.toDoArray count];
+    if (section == 0) {
+        return [self.toDoArray count];
+    }
+    else {
+        return [self.completedTasksArray count];
+    }
     
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ToDoCell *cell = (ToDoCell *)[tableView dequeueReusableCellWithIdentifier:@"TodoId"];
     
-    ToDo *todo = (self.toDoArray)[indexPath.row];
+    ToDoCell *cell = (ToDoCell *)[tableView dequeueReusableCellWithIdentifier:@"TodoId"];
+    ToDo *todo;
+    
+    if (indexPath.section == 0) {
+        
+        todo = (self.toDoArray)[indexPath.row];
+    }
+    else {
+        
+        todo = (self.completedTasksArray)[indexPath.row];
+    }
     cell.titleLabel.text = todo.title;
     cell.descriptionLabel.text = todo.toDoDescription;
     cell.priortyLabel.text = [NSString stringWithFormat:@"%@", todo.prioityNumber];
     
     return cell;
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,19 +108,44 @@
     }
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if ( section == 0)
+        return @"Incomplete Tasks";
+    else
+        return @"Completed Tasks";
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewRowAction *tableViewAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Complete Task" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        NSLog(@"is complete");
-    }];
+    UITableViewRowAction *completeTaskAction = [UITableViewRowAction
+                                                rowActionWithStyle:UITableViewRowActionStyleDefault
+                                                title:@"Complete Task"
+                                                handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                                                    
+                                                    NSLog(@"is complete");
+                                                    
+                                                    ToDo *task = [self.toDoArray objectAtIndex:indexPath.row];
+                                                    
+                                                    NSLog(@"todo title %@", task.title);
+                                                    
+                                                    task.isComplete = YES;
+                                                    
+                                                    [self.completedTasksArray addObject:task];
+                                                    
+                                                    [self.toDoArray removeObjectAtIndex:indexPath.row];
+                                                    
+                                                    [self.tableView reloadData];
+                                                    
+                                                }];
     
-    tableViewAction.backgroundColor = [UIColor greenColor];
+    completeTaskAction.backgroundColor = [UIColor greenColor];
     
-    return @[tableViewAction];
+    return @[completeTaskAction];
 }
 
 

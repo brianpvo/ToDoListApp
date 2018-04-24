@@ -127,11 +127,7 @@
                                                 title:@"Complete Task"
                                                 handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
                                                     
-                                                    NSLog(@"is complete");
-                                                    
                                                     ToDo *task = [self.toDoArray objectAtIndex:indexPath.row];
-                                                    
-                                                    NSLog(@"todo title %@", task.title);
                                                     
                                                     task.isComplete = YES;
                                                     

@@ -26,6 +26,10 @@
                                     priorityNumber: [NSNumber numberWithInteger:self.prioityTextField.text.integerValue]
                                         isComplete:NO];
     
+    self.titleTextField.text = @"";
+    self.descriptionTextField.text = @"";
+    self.prioityTextField.text = @"";
+    
     [self.delegate addTodo:todo];
 }
 

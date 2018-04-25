@@ -15,6 +15,7 @@
 @interface ViewController () <AddTodoViewControllerDelegate>
 
 @property (nonatomic) NSMutableArray <ToDo *> *toDoArray;
+@property (nonatomic) NSArray <ToDo *> *sortedTodoArray;
 @property (nonatomic) NSMutableArray <ToDo *> *completedTasksArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -42,9 +43,19 @@
                       fifthToDo,
                       nil];
     
+    self.sortedTodoArray = [self.toDoArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSNumber *first = [(ToDo*)a prioityNumber];
+        NSNumber *second = [(ToDo*)b prioityNumber];
+        return [second compare:first];
+    }];
+    
     self.completedTasksArray = [[NSMutableArray alloc] init];
     
 }
+
+
+
+
 - (IBAction)editTapped:(id)sender {
     self.tableView.editing = !self.tableView.editing;
 }
@@ -79,7 +90,8 @@
     
     if (indexPath.section == 0) {
         
-        todo = (self.toDoArray)[indexPath.row];
+//        todo = (self.toDoArray)[indexPath.row];
+        todo = (self.sortedTodoArray)[indexPath.row];
     }
     else {
         

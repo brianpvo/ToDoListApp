@@ -9,6 +9,7 @@
 #import "AddTodoViewController.h"
 
 @interface AddTodoViewController ()
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -25,6 +26,8 @@
                                    toDoDescription:self.descriptionTextField.text
                                     priorityNumber: [NSNumber numberWithInteger:self.prioityTextField.text.integerValue]
                                         isComplete:NO];
+    
+    todo.date = self.datePicker.date;
     
     self.titleTextField.text = @"";
     self.descriptionTextField.text = @"";

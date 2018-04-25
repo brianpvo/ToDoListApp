@@ -25,9 +25,8 @@
     ToDo *todo = [[ToDo alloc] initWithFullDetails:self.titleTextField.text
                                    toDoDescription:self.descriptionTextField.text
                                     priorityNumber: [NSNumber numberWithInteger:self.prioityTextField.text.integerValue]
-                                        isComplete:NO];
-    
-    todo.date = self.datePicker.date;
+                                        isComplete:NO
+                                              date: self.datePicker.date];
     
     self.titleTextField.text = @"";
     self.descriptionTextField.text = @"";

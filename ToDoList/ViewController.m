@@ -26,7 +26,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
     ToDo *firstToDo = [[ToDo alloc] initWithFullDetails:@"Drive" toDoDescription:@"Drive kids to school" priorityNumber:[NSNumber numberWithInt: 100] isComplete:NO];
     ToDo *secondToDo = [[ToDo alloc] initWithFullDetails:@"Work" toDoDescription:@"Go to work" priorityNumber:[NSNumber numberWithInt: 90] isComplete:NO];
     ToDo *thirdToDo = [[ToDo alloc] initWithFullDetails:@"Pick Up Kids" toDoDescription:@"Pick up kids from school" priorityNumber:[NSNumber numberWithInt: 98] isComplete:NO];
@@ -43,6 +42,9 @@
     
     self.completedTasksArray = [[NSMutableArray alloc] init];
     
+}
+- (IBAction)editTapped:(id)sender {
+    self.tableView.editing = !self.tableView.editing;
 }
 
 -(void)addTodo:(ToDo *)todo {
@@ -153,6 +155,32 @@
     completeTaskAction.backgroundColor = [UIColor greenColor];
     
     return @[deleteAction, completeTaskAction];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    ToDo *todo;
+    
+    if (sourceIndexPath.section == 0) {
+        todo = [self.toDoArray objectAtIndex:sourceIndexPath.row];
+        [self.toDoArray removeObjectAtIndex:sourceIndexPath.row];
+    } else {
+        todo = [self.completedTasksArray objectAtIndex:sourceIndexPath.row];
+        [self.completedTasksArray removeObjectAtIndex:sourceIndexPath.row];
+    }
+    
+    if (destinationIndexPath.section == 0) {
+        [self.toDoArray insertObject:todo atIndex:destinationIndexPath.row];
+    }
+    else {
+        [self.completedTasksArray insertObject:todo atIndex:destinationIndexPath.row];
+    }
+    
+    [self.tableView reloadData];
+    
 }
 
 

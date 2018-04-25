@@ -83,6 +83,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="ur5-dk-gnA">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="x4i-as-1Xd">
+                            <connections>
+                                <action selector="editTapped:" destination="BYZ-38-t0r" id="zYW-vv-vNf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GHh-tw-8gI">
                             <connections>
                                 <segue destination="Hev-6s-cku" kind="show" identifier="addButtonId" id="GK4-Bn-fjx"/>
